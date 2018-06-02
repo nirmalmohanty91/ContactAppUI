@@ -1,0 +1,102 @@
+<div class="example-container mat-elevation-z8">
+
+    <div class="example-header">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Customer id Column -->
+        <!--<ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> CustomerID </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>-->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> CustomerID </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+
+                <mat-form-field floatPlaceholder="{{ element.editing ? 'float' : 'never'}}">
+                    <input name="id" matInput [readonly]="!element.editing" placeholder="id" [(ngModel)]="element.currentData.id" required>
+                </mat-form-field>
+
+            </mat-cell>
+        </ng-container>
+
+        <!--First Name Column -->
+        <!--<ng-container matColumnDef="fname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Fist Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fname}} </mat-cell>
+        </ng-container>-->
+        <ng-container matColumnDef="fname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Fist Name </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatPlaceholder="{{ element.editing ? 'float' : 'never'}}">
+                    <input name="firstName" matInput [readonly]="!element.editing" placeholder="First Name" [(ngModel)]="element.currentData.fname">
+                </mat-form-field>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Last Name Column -->
+        <!--<ng-container matColumnDef="lname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lname}} </mat-cell>
+        </ng-container>-->
+        <ng-container matColumnDef="lname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-form-field floatPlaceholder="{{ element.editing ? 'float' : 'never'}}">
+                    <input name="lastName" matInput [readonly]="!element.editing" placeholder="Last Name" [(ngModel)]="element.currentData.lname">
+                </mat-form-field>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Address Column -->
+        <!--<ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+        </ng-container>-->
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+
+                <mat-form-field floatPlaceholder="{{ element.editing ? 'float' : 'never'}}">
+                    <input name="address" matInput [readonly]="!element.editing" placeholder="Address" [(ngModel)]="element.currentData.address">
+                </mat-form-field>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actionsColumn">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i color="primary" class="fa fa-plus mat-icon"></i></button>
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let element">
+                <button *ngIf="!element.editing" mat-icon-button color="primary" focusable="false" (click)="element.startEdit()">
+            <i class="fa fa-pencil mat-icon"></i>
+          </button>
+                <button *ngIf="element.editing && isData" mat-icon-button color="primary" focusable="false" (click)="element.confirmEditCreate();createNew()">
+            <i class="fa fa-check mat-icon"></i>
+          </button>
+                <button mat-icon-button color="primary" focusable="false" (click)="element.cancelOrDelete()">
+            <i class="fa fa-times mat-icon"></i>
+          </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+    </mat-paginator>
+</div>
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
