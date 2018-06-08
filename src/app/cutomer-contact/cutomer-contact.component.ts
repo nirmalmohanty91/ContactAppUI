@@ -32,7 +32,7 @@ export class CutomerContactComponent implements OnInit {
   ngOnInit() {
     this.dataService.getAllContacts().subscribe((data:any)=>{
       this.customers=data;
-      this.dataSource=new MatTableDataSource(data);
+      this.dataSource=new MatTableDataSource<Customer>(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort=this.sort;
     })
@@ -65,12 +65,12 @@ deleteRow(){
 }
 
 export interface Customer {
- 
-  position: number;
+   position: number;
   id: string;
   fname: string;
   lname: string;
   address:string;
+ 
 }
 //1st attempt without connecting to db
 // const ELEMENT_DATA: Customer[] = [

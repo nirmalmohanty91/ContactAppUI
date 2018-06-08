@@ -9,12 +9,19 @@ import { Customer } from './cutomer-contact/cutomer-contact.component';
 @Injectable()
 export class DataServiceService {
 
-  private serviceUrl='http://192.168.2.4:8080/getAllContacts';
+  private getAllRecords='http://localhost:8080/getAllContacts';
+  private deleteRecord="http://localhost:8080/deleteContact";
 
   constructor(private httpClient:HttpClient) { }
   
   getAllContacts():Observable<Customer[]>{
-        return this.httpClient.get<Customer[]>(this.serviceUrl);
+        return this.httpClient.get<Customer[]>(this.getAllRecords);
+    }
+
+    deleteContact(id:String){
+       
+        //return this.httpClient.get<String>(this.deleteRecord);
+       // return this.httpClient.post<String>(this.deleteRecord);
     }
 
 }

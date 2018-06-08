@@ -15,6 +15,11 @@ import { HttpClientModule} from '@angular/common/http';
 import { MatPaginatorModule, MatSortModule} from '@angular/material';
 import { MatIconModule} from '@angular/material';
 import { HttpModule } from '@angular/http';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 
@@ -38,7 +43,11 @@ import { HttpModule } from '@angular/http';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    HttpModule
+    HttpModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MyImports {}

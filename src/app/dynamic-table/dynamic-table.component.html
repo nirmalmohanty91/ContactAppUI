@@ -1,0 +1,147 @@
+<!--<mat-card>
+    <div class="mat-table">
+        <div class="mat-header-row">
+            <div class="mat-header-cell">Id</div>
+            <div class="mat-header-cell">First Name</div>
+            <div class="mat-header-cell">Last Name</div>
+            <div class="mat-header-cell">Address</div>
+            <div class="mat-header-cell">Action</div>
+        </div>
+        <div *ngFor="let record of customers">
+            <div class="mat-row">
+                <div class="mat-cell">
+                    <input [(ngModel)]="record.id"></div>
+            </div>
+            <div class="mat-row">
+                <div class="mat-cell">
+                    <input [(ngModel)]="record.fname"></div>
+            </div>
+        </div>
+    </div>
+
+</mat-card>
+
+
+
+<mat-grid-list cols="5" rowHeight="20px">
+    <mat-grid-tile *ngFor="let tile of header" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+        {{tile.text}}
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let customer of customers" [colspan]="1" [rowspan]="5">
+        {{customer.id}}
+    </mat-grid-tile>
+
+
+</mat-grid-list>-->
+
+<!--<div *ngFor="let a of customers">
+    {{a.fname}}
+</div>-->
+
+
+<h2 mat-dialog-title>Customer Details</h2>
+<mat-dialog-content>
+    <div class="component-div">
+        <!--<div class="component-header">
+            Selected Target Service Account & Cnumber: {{targetCompanyService.service}} & {{targetCompanyService.cnumber}}
+        </div>-->
+        <div class="example-container mat-elevation-z8">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let customer of customers">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{customer.id}}
+                        </mat-panel-title>
+                        <!--<mat-panel-description>
+                            Customer Details
+                        </mat-panel-description>-->
+                    </mat-expansion-panel-header>
+
+                    <div class="mat-table">
+                        <div class="mat-header-row">
+                            <div class="mat-header-cell">Fisrt Name</div>
+                            <div class="mat-header-cell">Last Name</div>
+                            <div class="mat-header-cell">Address</div>
+                            <div class="mat-header-cell">Action</div>
+                        </div>
+                        <div class="mat-row">
+                            <div class="mat-cell">{{customer.id}}</div>
+                            <div class="mat-cell">
+                                <input [(ngModel)]="customer.fname">
+                            </div>
+                            <div class="mat-cell">
+                                <input [(ngModel)]="customer.lname">
+                            </div>
+                            <div class="mat-cell">
+                                <input [(ngModel)]="customer.address">
+                            </div>
+
+                            <div class="mat-cell">
+                                <button style="margin:1%" color="primary" mat-raised-button (click)="updateCustomer(customer)" class="btnClass">Edit</button>
+                                <button style="margin:1%" color="primary" mat-raised-button class="btnClass" (click)="resetCustomer(customer)">Reset</button>
+                            </div>
+                        </div>
+                        <!--<div *ngIf="trgtdisc.laborTypeIP!=null && trgtdisc.laborTypeIP!=undefined && trgtdisc.laborTypeIP!=''" class="mat-row">
+                            <div class="mat-cell">{{trgtdisc.laborTypeIP}}</div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromIP=='D'}" [(ngModel)]="trgtdisc.laborTargetCoIP" [disabled]="trgtdisc.accountFromIP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromIP=='D'}" [(ngModel)]="trgtdisc.laborAccountNoIP" [disabled]="trgtdisc.accountFromIP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromIP=='D'}" [(ngModel)]="trgtdisc.laborPercentIP" [disabled]="trgtdisc.accountFromIP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromIP=='D'}" [(ngModel)]="trgtdisc.partsTargetCoIP" [disabled]="trgtdisc.accountFromIP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromIP=='D'}" [(ngModel)]="trgtdisc.partsAccountNoIP" [disabled]="trgtdisc.accountFromIP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromIP=='D'}" [(ngModel)]="trgtdisc.partsPercentIP" [disabled]="trgtdisc.accountFromIP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <button style="margin:1%" color="primary" mat-raised-button (click)="EditLaborType(trgtdisc,'IP')" class="btnClass">Edit</button>
+                                <button style="margin:1%" color="primary" mat-raised-button class="btnClass" (click)="ResetLaborType(trgtdisc, 'IP')">Reset</button>
+                            </div>
+                        </div>-->
+                        <!--<div *ngIf="trgtdisc.laborTypeWP!=null && trgtdisc.laborTypeWP!=undefined && trgtdisc.laborTypeWP!=''s" class="mat-row">
+                            <div class="mat-cell">{{trgtdisc.laborTypeWP}}</div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromWP=='D'}" [(ngModel)]="trgtdisc.laborTargetCoWP" [disabled]="trgtdisc.accountFromWP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromWP=='D'}" [(ngModel)]="trgtdisc.laborAccountNoWP" [disabled]="trgtdisc.accountFromWP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromWP=='D'}" [(ngModel)]="trgtdisc.laborPercentWP" [disabled]="trgtdisc.accountFromWP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromWP=='D'}" [(ngModel)]="trgtdisc.partsTargetCoWP" [disabled]="trgtdisc.accountFromWP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromWP=='D'}" [(ngModel)]="trgtdisc.partsAccountNoWP" [disabled]="trgtdisc.accountFromWP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <input [ngClass]="{'inputAccntEdit': trgtdisc.accountFromWP=='D'}" [(ngModel)]="trgtdisc.partsPercentWP" [disabled]="trgtdisc.accountFromWP=='L'">
+                            </div>
+                            <div class="mat-cell">
+                                <button style="margin:1%" color="primary" mat-raised-button (click)="EditLaborType(trgtdisc,'WP')" class="btnClass">Edit</button>
+                                <button style="margin:1%" color="primary" mat-raised-button class="btnClass" (click)="ResetLaborType(trgtdisc, 'WP')">Reset</button>
+                            </div>
+                        </div>-->
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+    <!-- <div class="dvNote">*Please Note : The Account# and the Company# of the selected target Service Group is implicitly applied during the discount code copy. If the Account# or Company# needs to be changed, then please correct it in the {{selCurrentServiceAccntCnumber}} box once the copy is complete.</div> -->
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button color="primary" mat-raised-button (click)="onNoClick(false)" class="btnClass">Cancel</button>
+    <button color="primary" mat-raised-button class="btnClass" (click)="onNoClick(true)">Continue</button>
+</mat-dialog-actions>
+<div class="overlay" *ngIf="showSpinner">
+    <mat-progress-spinner class="spinnerClss" mode="indeterminate"></mat-progress-spinner>
+</div>

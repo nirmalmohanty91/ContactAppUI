@@ -1,8 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+.inputAccntEdit {
+    border-bottom: 1px solid grey;
+}
 
-@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
-body {
-    /* background-color: lightgray; */
+input {
+    border: none;
+    font-size: 14px;
+    width: 80%;
+}
+
+.mat-row,
+.mat-header-row {
+    display: flex;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    align-items: center;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+
+/*body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 14px;
 }
@@ -68,7 +85,7 @@ body {
 .mat-checkbox-checked.mat-accent .mat-checkbox-background,
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
     background-color: #3f51b5;
-}
+}*/
 
 
 /* .mat-tab-labels{
@@ -90,7 +107,8 @@ body {
     font-weight: bold;
     } */
 
-.mat-tab-label {
+
+/*.mat-tab-label {
     height: 40px !important;
 }
 
@@ -133,4 +151,4 @@ inputAccntEdit {
 
 .mat-snack-bar-container {
     background: #3f51b5;
-}
+}*/

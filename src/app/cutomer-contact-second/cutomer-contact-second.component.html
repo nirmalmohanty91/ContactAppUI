@@ -79,10 +79,10 @@
                 <button *ngIf="!element.editing" mat-icon-button color="primary" focusable="false" (click)="element.startEdit()">
             <i class="fa fa-pencil mat-icon"></i>
           </button>
-                <button *ngIf="element.editing && isData" mat-icon-button color="primary" focusable="false" (click)="element.confirmEditCreate();createNew()">
+                <button *ngIf="element.editing && isData" mat-icon-button color="primary" focusable="false" (click)="element.confirmEditCreate();createNew(element.currentData)">
             <i class="fa fa-check mat-icon"></i>
           </button>
-                <button mat-icon-button color="primary" focusable="false" (click)="element.cancelOrDelete()">
+                <button mat-icon-button color="primary" focusable="false" (click)="element.cancelOrDelete();deleteRow(element.currentData.id)">
             <i class="fa fa-times mat-icon"></i>
           </button>
             </mat-cell>

@@ -8,6 +8,7 @@ import { CutomerContactComponent } from './cutomer-contact/cutomer-contact.compo
 import { MyImports } from './myImports';
 import { DataServiceService } from './data-service.service';
 import { CutomerContactSecondComponent } from './cutomer-contact-second/cutomer-contact-second.component';
+import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
 
 
 
@@ -17,7 +18,8 @@ import { CutomerContactSecondComponent } from './cutomer-contact-second/cutomer-
     ContactApp,
     HTTPTestComponent,
     CutomerContactComponent,
-    CutomerContactSecondComponent
+    CutomerContactSecondComponent,
+    DynamicTableComponent
   ],
   imports: [
     BrowserModule,

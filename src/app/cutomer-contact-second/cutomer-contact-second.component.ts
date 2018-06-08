@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
 import { DataServiceService } from '../data-service.service';
 import { TableDataSource, ValidatorService } from 'angular4-material-table';
+import { Records } from '../../Records';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class CutomerContactSecondComponent implements OnInit {
   //dataSource = new CustomerDataSource(this.dataService);
   //3rd Attempt
   dataSource: TableDataSource<Customer>;
+  //records: Records[] = new Array<Records>();
+  //dataSource= new MatTableDataSource<Customer>();
   
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,10 +33,12 @@ export class CutomerContactSecondComponent implements OnInit {
   ngOnInit() {
     this.dataService.getAllContacts().subscribe((data:any)=>{
       this.customers=data;
-      this.dataSource=new TableDataSource(data);
-      //alert(this.dataSource);
-      // this.dataSource.paginator = this.paginator;
-      // this.dataSource.sort=this.sort;
+      this.dataSource=new TableDataSource<Customer>(data);
+      //alert(JSON.stringify(this.customers));
+      // this.dataSource=new MatTableDataSource<Customer>(data);
+      // alert(JSON.stringify(this.dataSource));
+      //  this.dataSource.paginator = this.paginator;
+      //this.dataSource.sort=this.sort;
     })
 
 
@@ -49,8 +54,8 @@ export class CutomerContactSecondComponent implements OnInit {
   //   this.dataSource.paginator = this.paginator;
   // }
 
-createNew(){
-  alert("No Data!");
+createNew(Object){
+  alert(JSON.stringify(Object));
   this.isData=false;
   alert("Implement logic to add new row.");
 }
@@ -59,7 +64,9 @@ updateRow(){
   alert("Implement logic to update an existing row");
 }
 
-deleteRow(){
+deleteRow(id:String){
+  alert(id);
+  this.dataService.deleteContact(id);
   alert("Implement logic to delete a row");
 }
 
